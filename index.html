@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,28 @@
 <body>
     <main>
         <header>
+            <div class="jumbotron m-3">
+                <h1>Tabla de retenciones por año</h1>
+                <p>Qué año quieres ver en la tabla?</p>
+
+                <form id="formVerTasas" class="form d-flex gap-2">
+                    <input id="inputCantidad" class="form-control" type="number"
+                        placeholder="indicar cuántos años quieres ver">
+                    <input type="submit" class="btn btn-secondary" value="Ver">
+                </form>
+
+                <div id="tableTasas" class="table-responsive" style="display: none;">
+                    <table class="table table-bordered my-3">
+                        <thead class="table-dark">
+                            <th>Año</th>
+                            <th>Tasa</th>
+                        </thead>
+                        <tbody id="tbodyTasas"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
             <h1 id="calculopers">Calculadora de boletas de honorarios</h1>
         </header>
         <form id="datosForm">
@@ -30,6 +53,9 @@
         <p id="registros"></p>
     </main>
     <script src="./JS/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

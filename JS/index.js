@@ -87,6 +87,46 @@ function actualizar() {
   })
 }
 
+//
+
+const formVerTasas = document.querySelector('#formVerTasas')
+const tableTasas = document.querySelector('#tableTasas')
+const tbodyTasas = document.querySelector('#tbodyTasas')
+
+formVerTasas.addEventListener('submit', e => {
+  e.preventDefault()
+  const cantidadStr = document.querySelector('#inputCantidad').value
+  const cantidad = parseInt(cantidadStr)
+  if (!isNaN(cantidad) && cantidad > 0 && cantidad < 6) {
+    actualizarTablaConTasas(cantidad)
+    tableTasas.style.display = 'block'
+  }
+})
+
+function actualizarTablaConTasas(cantidad) {
+  const url = './JSON/table.json'
+  fetch(url)
+    .then(res => res.json())
+    .then(obj => {
+      const tasasJson = obj.results
+      rellenarLaTablaTasas(tasasJson, cantidad)
+    })
+}
+
+function rellenarLaTablaTasas(tasasJson, cantidad) {
+  tbodyTasasJson.innerHTML = ''
+  for (let i = 0; i < cantidad; i++) {
 
 
+    const tr = document.createElement('tr')
+    tbodyTasasJson.appendChild(tr)
 
+    const tdNum = document.createElement('td')
+    tdNum.innerHTML = i + 1
+    tr.appendChild(tdNum)
+
+    const tdNombre = document.createElement('td')
+    tdNombre.innerHTML = tasasJson[i].anio
+    tr.appendChild(tdNombre)
+  }
+}
