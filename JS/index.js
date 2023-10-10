@@ -103,23 +103,13 @@ formVerTasas.addEventListener('submit', e => {
   }
 })
 
-function actualizarTablaConTasas(cantidad) {
-  const url = './JSON/table.json'
-  fetch(url)
-    .then(res => res.json())
-    .then(obj => {
-      const tasasJson = obj.results
-      rellenarLaTablaTasas(tasasJson, cantidad)
-    })
-}
-
 function rellenarLaTablaTasas(tasasJson, cantidad) {
-  tbodyTasasJson.innerHTML = ''
+  tbodyTasas.innerHTML = ''
   for (let i = 0; i < cantidad; i++) {
 
 
     const tr = document.createElement('tr')
-    tbodyTasasJson.appendChild(tr)
+    tbodyTasas.appendChild(tr)
 
     const tdNum = document.createElement('td')
     tdNum.innerHTML = i + 1
@@ -129,4 +119,13 @@ function rellenarLaTablaTasas(tasasJson, cantidad) {
     tdNombre.innerHTML = tasasJson[i].anio
     tr.appendChild(tdNombre)
   }
+}
+function actualizarTablaConTasas(cantidad) {
+  const url = './JSON/table.json'
+  fetch(url)
+    .then(res => res.json())
+    .then(obj => {
+      const tasasJson = obj.results
+      rellenarLaTablaTasas(tasasJson, cantidad)
+    })
 }
