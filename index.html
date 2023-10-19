@@ -16,47 +16,47 @@
     <main>
         <header>
             <div class="jumbotron m-3">
-                <h1>Tabla de retenciones por año</h1>
-                <p>Qué año quieres ver en la tabla?</p>
+                <h1>Mostrar tasa de retención</h1>
 
-                <form id="formVerTasas" class="form d-flex gap-2">
-                    <input id="inputCantidad" class="form-control" type="number"
-                        placeholder="indicar cuántos años quieres ver">
-                    <input type="submit" class="btn btn-secondary" value="Ver">
+                <form id="formVerTasas" action="#">
+                    <input type="text" id="inputAnio" placeholder="Ingresar año">
+                    <button type="submit">Ver</button>
                 </form>
 
-                <div id="tableTasas" class="table-responsive" style="display: none;">
-                    <table class="table table-bordered my-3">
-                        <thead class="table-dark">
+                <table id="tableTasas" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
                             <th>Año</th>
                             <th>Tasa</th>
-                        </thead>
-                        <tbody id="tbodyTasas"></tbody>
-                    </table>
-                </div>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyTasas"></tbody>
+                </table>
             </div>
-
-
-            <h1 id="calculopers">Calculadora de boletas de honorarios</h1>
-        </header>
-        <form id="datosForm">
-            <label for="nombre">Nombre</label><input id="nombre" type="text">
-            <label for="servicio">Nombre del servicio</label><input id="servicio" type="text">
-            <label for="monto">Monto</label><input id="monto" type="number">
-            <label for="anio">Año servicio</label><input id="anioservicio" type="number">
-            <label for="tasaRetencion">Tasa retención</label><input id="tasa" type="number">
-            <button type="submit" class="btn btn-primary mb-3">Calcular</button>
-        </form>
-        <br>
-        <br>
-        <h2 id="list">Boletas</h2>
-        <p id="registros"></p>
+            </div>
         
-    </main>
-    <script src="./JS/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+        
+        <h1 id="calculopers">Calculadora de boletas de honorarios</h1>
+    </header>
+    <form id="datosForm">
+        <label for="nombre">Nombre</label><input id="nombre" type="text">
+        <label for="servicio">Nombre del servicio</label><input id="servicio" type="text">
+        <label for="monto">Monto</label><input id="monto" type="number">
+        <label for="anio">Año servicio</label><input id="anioservicio" type="number">
+        <label for="tasaRetencion">Tasa retención</label><input id="tasa" type="number">
+        <button type="submit" class="btn btn-primary mb-3">Calcular</button>
+    </form>
+    <br>
+    <br>
+    <h2 id="list">Boletas</h2>
+    <p id="registros"></p>
+    
+</main>
+<script src="./JS/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -93,39 +93,44 @@ const formVerTasas = document.querySelector('#formVerTasas')
 const tableTasas = document.querySelector('#tableTasas')
 const tbodyTasas = document.querySelector('#tbodyTasas')
 
-formVerTasas.addEventListener('submit', e => {
-  e.preventDefault()
-  const cantidadStr = document.querySelector('#inputCantidad').value
-  const cantidad = parseInt(cantidadStr)
-  if (!isNaN(cantidad) && cantidad > 0 && cantidad < 6) {
-    actualizarTablaConTasas(cantidad)
-    tableTasas.style.display = 'block'
+function actualizarTablaConTasas(anio) {
+  tbodyTasas.innerHTML = '';
+
+  formVerTasas.addEventListener('submit', e => {
+    e.preventDefault();
+    const anio = document.querySelector('#inputAnio').value;
+    actualizarTablaConTasas(anio);
+    tableTasas.style.display = 'block';
+  });
+
+
+
+  if (anio) {
+    for (let i = 0; i < tasasJson.length; i++) {
+      if (tasasJson[i].anio === anio) {
+        const tr = document.createElement('tr');
+        tbodyTasas.appendChild(tr);
+
+        const tdNum = document.createElement('td');
+        tdNum.innerHTML = i + 1;
+        tr.appendChild(tdNum);
+
+        const tdNombre = document.createElement('td');
+        tdNombre.innerHTML = tasasJson[i].anio;
+        tr.appendChild(tdNombre);
+
+        const tdTasa = document.createElement('td');
+        tdTasa.innerHTML = tasasJson[i].tasa;
+        tr.appendChild(tdTasa);
+      }
+    }
+  } else {
+    // El año no existe
+    const tr = document.createElement('tr');
+    tbodyTasas.appendChild(tr);
+
+    const tdNum = document.createElement('td');
+    tdNum.innerHTML = 'No hay tasas disponibles';
+    tr.appendChild(tdNum);
   }
-})
-
-function rellenarLaTablaTasas(tasasJson, cantidad) {
-  tbodyTasas.innerHTML = ''
-  for (let i = 0; i < cantidad; i++) {
-
-
-    const tr = document.createElement('tr')
-    tbodyTasas.appendChild(tr)
-
-    const tdNum = document.createElement('td')
-    tdNum.innerHTML = i + 1
-    tr.appendChild(tdNum)
-
-    const tdNombre = document.createElement('td')
-    tdNombre.innerHTML = tasasJson[i].anio
-    tr.appendChild(tdNombre)
-  }
-}
-function actualizarTablaConTasas(cantidad) {
-  const url = './JSON/table.json'
-  fetch(url)
-    .then(res => res.json())
-    .then(obj => {
-      const tasasJson = obj.results
-      rellenarLaTablaTasas(tasasJson, cantidad)
-    })
 }
