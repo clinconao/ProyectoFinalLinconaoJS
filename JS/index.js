@@ -31,37 +31,8 @@ datosForm.addEventListener("submit", (event) => {
   const calculo = montoValor * (tasaRetencionValor / 100);
   const bolsillo = montoValor - calculo;
   const usuario = new Usuario(nombre.value, servicio.value, montoValor, tasaRetencionValor, anio.value, bolsillo);
-  usuarios.push(usuario);
-  localStorage.setItem('usuarios', JSON.stringify(usuarios));
-  actualizar();
-  nombre.value = '';
-  servicio.value = '';
-  monto.value = '';
-  tasaRetencion.value = '';
-  anio.value = '';
-});
-
-function actualizar() {
-  const soloServicio = usuarios.map(u => `${u.servicio} - Retención a pagar: ${u.bolsillo}`);
-  registros.innerHTML = soloServicio.join('<br>');
-
-  // uso de promise
-
-  new Promise((espera1, espera2) => {
-    setTimeout(() => {
-      alert('Gracias por usar nuestra calculadora')
-      espera1()
-    }, 5_000)
-  }).then(() => {
-    setTimeout(() => {
-      Swal.fire(
-        '¿Tienes dudas?',
-        'Escríbenos en nuestro formulario de contacto',
-        'question'
-      )
-    }, 5_000)
-  })
-
+ 
+ 
   // uso libreria 
   let timerInterval
   Swal.fire({
@@ -85,7 +56,38 @@ function actualizar() {
       console.log('Cerrando')
     }
   })
+  usuarios.push(usuario);
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+  actualizar();
+  nombre.value = '';
+  servicio.value = '';
+  monto.value = '';
+  tasaRetencion.value = '';
+  anio.value = '';
+});
+
+function actualizar() {
+  const soloServicio = usuarios.map(u => `${u.servicio} - Retención a pagar: ${u.bolsillo}`);
+  registros.innerHTML = soloServicio.join('<br>');
+
 }
+
+  // uso de promise
+
+  new Promise((espera1, espera2) => {
+    setTimeout(() => {
+      alert('Gracias por usar nuestra calculadora')
+      espera1()
+    }, 5_000)
+  }).then(() => {
+    setTimeout(() => {
+      Swal.fire(
+        '¿Tienes dudas?',
+        'Escríbenos en nuestro formulario de contacto',
+        'question'
+      )
+    }, 5_000)
+  })
 
 //
 
