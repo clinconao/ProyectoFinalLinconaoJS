@@ -78,7 +78,7 @@ function actualizar() {
     setTimeout(() => {
       alert('Gracias por usar nuestra calculadora')
       espera1()
-    }, 5_000)
+    }, 25_000)
   }).then(() => {
     setTimeout(() => {
       Swal.fire(
@@ -86,7 +86,7 @@ function actualizar() {
         'Escríbenos en nuestro formulario de contacto',
         'question'
       )
-    }, 5_000)
+    }, 25_000)
   })
 
 //
